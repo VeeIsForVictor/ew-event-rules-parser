@@ -41,7 +41,8 @@ def main():
                     entries.append([name, i])
                     
                 except AttributeError:
-                    break
+                    print(f"[DEBUG]: marker_match ('{marker_match.string}') is true but name_match is None")
+                    continue
 
         entries[-1].append(n_pages - 1)
 
