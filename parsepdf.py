@@ -3,7 +3,7 @@ import os
 import re
 
 # Variables
-PATH = 'Engg Week 2024 Handbook V1.pdf'
+PATH = './[EASL] EW 2025 Handbook Version 1.pdf'
 OUTPATH = 'output/'
 
 # Consts
@@ -29,15 +29,19 @@ def main():
             if marker_match:
                 count += 1
 
-                name_match = re.search(NAME_REGEX, text)
-                name = name_match.group(1).replace('\n', ' ').strip()
-                name = re.sub(r'[\\/:*?\"<>|]', '', name)
-                print(f"Found {name} at page {i + 1}")
+                try:
+                    name_match = re.search(NAME_REGEX, text)
+                    name = name_match.group(1).replace('\n', ' ').strip()
+                    name = re.sub(r'[\\/:*?\"<>|]', '', name)
+                    print(f"Found {name} at page {i + 1}")
 
-                if entries:
-                    entries[-1].append(i - 1)
+                    if entries:
+                        entries[-1].append(i - 1)
 
-                entries.append([name, i])
+                    entries.append([name, i])
+                    
+                except AttributeError:
+                    break
 
         entries[-1].append(n_pages - 1)
 
