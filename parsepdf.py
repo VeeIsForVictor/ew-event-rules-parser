@@ -31,7 +31,7 @@ def main():
 
                 try:
                     name_match = re.search(NAME_REGEX, text)
-                    name = name_match.group(1).replace('\n', ' ').strip()
+                    name = name_match.group(1).replace('\n', '').strip()
                     name = re.sub(r'[\\/:*?\"<>|]', '', name)
                     print(f"Found {name} at page {i + 1}")
 
